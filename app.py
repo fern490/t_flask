@@ -31,7 +31,7 @@ def eliminarUs(id):
     return f'Usuario con ID {id} eliminado'
 
 @app.route("/show/<int:id>")
-def mostrarUs(id):
+def buscarUs(id):
     db = abrirConexion()
     datos = db.execute("SELECT usuario, email FROM usuarios WHERE id = ?", (id,)).fetchone()
     db.close()
@@ -58,7 +58,19 @@ def datos_plantilla(id):
         email = res['email']
         telefono = res['telefono']
         direccion = res['direccion']
-    return render_template("datos2.html", id = id, usuario = usuario, email = email, telefono = telefono, direccion = direccion)
+    return render_template("datos.html", id = id, usuario = usuario, email = email, telefono = telefono, direccion = direccion)
     
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/lista-de-usuarios")
+def mostrarUs():
+    global db
+    db = abrirConexion()
+    cursor = db.cursor()
+    usuarios = cursor.execute("SELECT id, usuario FROM usuarios").fetchall()
+    cerrarConexion()
+
+    usuario = None
+    
+    return render_template("datos2.html", usuarios = usuarios)

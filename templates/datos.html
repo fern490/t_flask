@@ -1,0 +1,40 @@
+{# <!DOCTYPE html>
+    <html lang="es">
+      <head>
+        <meta charset="UTF-8" />
+        <title>Prueba</title>
+      </head>
+      <body>
+        <h1>Título</h1>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqsa_Ubn2VvJjejujj9Kw9yO0f0BX4Z3REyg&s"
+          alt="imagen"
+        />
+        <br />
+        <a href="{{ url_for('dia') }}">The day</a>
+        <br />
+        <a href="{{ url_for('tarde') }}">The afternoon</a>
+        <br />
+        <a href="{{ url_for('noche') }}">The night</a>
+      </body>
+    </html>
+    #}
+    
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Datos de Usuario</title>
+    </head>
+    <body>
+        {% if usuario == None %}
+            <h1 style='color: red'>No existe el usuario con ID {{id}}</h1>
+        {% else %}
+            <h2>Datos del Usuario</h2>
+            <p>ID: {{id}}</p>
+            <p>Usuario: {{usuario}}</p>
+            <p>Email: {{email}}</p>
+            <p>Teléfono: {{telefono}}</p>
+            <p>Direccion: {{direccion}}</p>
+        {% endif %}
+    </body>
+    </html>

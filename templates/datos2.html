@@ -23,10 +23,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Datos del Usuario</title>
+    <title>Lista de Usuarios</title>
 </head>
 <body>
-    {% if usuario == None %}
+    <!--{% if usuario == None %}
         <h1 style='color: red'>No existe el usuario con ID {{id}}</h1>
     {% else %}
         <h2>Datos del Usuario</h2>
@@ -35,6 +35,13 @@
         <p>Email: {{email}}</p>
         <p>Teléfono: {{telefono}}</p>
         <p>Direccion: {{direccion}}</p>
-    {% endif %}
+    {% endif %}-->
+
+    <h3>Lista de usuarios:</h3>
+    <ul>
+      {% for usuario in usuarios %}
+         <li> <a href="{{ url_for('datos_plantilla', id = usuario['id']) }}">{{ usuario['usuario'] }}</a></li>
+      {% endfor %}
+      </ul>
 </body>
 </html>
